@@ -70,11 +70,6 @@ credit_card_balance_processed:
   type: pandas.ParquetDataset         
   filepath: data/02_intermediate/credit_card_balance.parquet
 
-# Feature Engineering - aggregation of applications
-previous_application_agg:
-  type: pandas.ParquetDataset
-  filepath: data/04_feature/previous_application_agg.parquet
-
 # Splitting the data into train and test sets
 
 X_train:
@@ -113,6 +108,113 @@ X_test_capped:
   type: pandas.ParquetDataset
   filepath: data/05_model_input/X_test_capped.parquet
 
+# Feature Engineering - aggregation of applications
 
+previous_application_agg:
+  type: pandas.ParquetDataset
+  filepath: data/04_feature/previous_application_agg.parquet
 
+# Feature Engineering - aggregation of POS_CASH_balance
+
+POS_CASH_balance_agg:
+  type: pandas.ParquetDataset
+  filepath: data/04_feature/POS_CASH_balance_agg.parquet
+
+# Feature Engineering - aggregation of installments_payments
+
+installments_payments_agg:
+  type: pandas.ParquetDataset
+  filepath: data/04_feature/installments_payments_agg.parquet
+
+# Feature Engineering - aggregation of credit_card_balance
+
+credit_card_balance_agg:
+  type: pandas.ParquetDataset
+  filepath: data/04_feature/credit_card_balance_agg.parquet
+
+# Feature Engineering - aggregation of bureau_balance and bureau 
+
+bureau_balance_agg:
+  type: pandas.ParquetDataset
+  filepath: data/04_feature/bureau_balance_agg.parquet
+
+bureau_agg:
+  type: pandas.ParquetDataset
+  filepath: data/04_feature/bureau_agg.parquet
+
+# Merging all aggregated features
+
+merged_features:
+  type: pandas.ParquetDataset
+  filepath: data/04_feature/merged_features.parquet
+
+# Scaling features
+
+X_train_scaled:
+  type: pandas.ParquetDataset
+  filepath: data/05_model_input/X_train_scaled.parquet
+
+X_test_scaled:
+  type: pandas.ParquetDataset
+  filepath: data/05_model_input/X_test_scaled.parquet
+
+# Encoding categorical features
+
+X_train_encoded:
+  type: pandas.ParquetDataset
+  filepath: data/05_model_input/X_train_encoded.parquet 
+
+X_test_encoded:
+  type: pandas.ParquetDataset
+  filepath: data/05_model_input/X_test_encoded.parquet
+
+# LightGBM model
+
+model:
+  type: pickle.PickleDataset
+  filepath: data/06_models/lgbm_model.pickle 
+
+model_metrics:
+  type: json.JSONDataset
+  filepath: data/08_reporting/model_metrics.json
+
+#Feature Selection
+
+X_train_selected:
+  type: pandas.ParquetDataset
+  filepath: data/05_model_input/X_train_selected.parquet
+
+X_test_selected:
+  type: pandas.ParquetDataset
+  filepath: data/05_model_input/X_test_selected.parquet
+
+model_selected:
+  type: pickle.PickleDataset
+  filepath: data/06_models/lgbm_model_selected.pickle
+
+model_metrics_selected:
+  type: json.JSONDataset
+  filepath: data/08_reporting/model_metrics_selected.json
+
+model_selected_features:
+  type: pickle.PickleDataset
+  filepath: data/06_models/lgbm_model_selected_features.pickle
+
+# Predictive Models
+
+model_logreg:
+  type: pickle.PickleDataset
+  filepath: data/06_models/logreg_model.pickle
+
+model_rf:
+  type: pickle.PickleDataset
+  filepath: data/06_models/rf_model.pickle
+
+model_rf_tuned:
+  type: pickle.PickleDataset
+  filepath: data/06_models/rf_tuned_model.pickle
+
+model_xgb:
+  type: pickle.PickleDataset
+  filepath: data/06_models/xgb_model.pickle
 
